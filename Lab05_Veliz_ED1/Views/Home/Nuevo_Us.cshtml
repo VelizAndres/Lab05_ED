@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Nuevo_Us";
+}
+
+<h2>Nuevo Usuario</h2>
+
+@using (Html.BeginForm("CreateUser", "Home"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Perfil Nuevo</h4>
+        <hr />
+     
+        <label>Nombre</label>
+        <input type="text" name="Texto" />
+        <button type="submit">Crear</button>
+        }
+    </div>
+}
+@ViewBag.Error   
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>

@@ -1,0 +1,80 @@
+﻿@model Lab05_Veliz_ED1.Models.mTarea
+
+@{
+    ViewBag.Title = "Crear Tarea";
+}
+
+<h2>Crear Tarea</h2>
+
+<div>
+    <label style="color:red">  @ViewBag.Error </label>    
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Tarea del desarrollador</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Proyeto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Proyeto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Proyeto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="selectPrioridad" class="col-lg-2 control-label">Prioridad</label>
+            <div class="col-md-10">
+                <label> Elija la prioridad</label>
+                <select class="form-control" id="selectPrioridad" name="Prioridad">
+                    <option>Alta</option>
+                    <option>Media Alta</option>
+                    <option>Media</option>
+                    <option>Media Baja</option>
+                    <option>Baja</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear" class="btn btn-default" />
+                <input type="reset" value="Borrar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<div>
+    @Html.ActionLink("Regresar", "Perfil")
+</div>

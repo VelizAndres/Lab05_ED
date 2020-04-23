@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Pefil";
+}
+
+<h3>Perfil</h3>
+
+<h5>@ViewBag.Desarrollador</h5>
+@using (Html.BeginForm())
+{
+    if (Convert.ToInt16(@ViewBag.Cantidad_tareas) <= 10)
+    {
+     <div class="center-block">   @Html.ActionLink("Crear una nueva tarea", "CrearTarea", "Tareas")</div>
+    }
+}
+
+<table class="table">
+    <tr>
+        <th>  Fecha       </th>
+        <th>  Título      </th>
+        <th>  Descripción </th>
+        <th>  Proyecto    </th>
+        <th>  Prioridad   </th>
+        <th>              </th>
+    </tr>
+    <tr>
+        <td>  @ViewBag.Fecha      </td>
+        <td>  @ViewBag.Titulo     </td>
+        <td>  @ViewBag.Descripción</td>
+        <td>  @ViewBag.Proyecto   </td>
+        <td>  @ViewBag.Prioridad  </td>
+        <td>
+            @using (Html.BeginForm())
+            {
+                if (ViewBag.Titulo != null)
+                {
+                    @Html.ActionLink("Completada", "CompletarTarea", "Tareas")
+                }
+            }
+        </td>
+    </tr>
+</table>
+<div></div>
+<div>
+
+</div>
+
+@Html.ActionLink("Regresar", "User_Dev", "Home")

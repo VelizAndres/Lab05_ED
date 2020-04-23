@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Lab05_Veliz_ED1.Models.mPerfil>
+
+@{
+    ViewBag.Title = "User_Dev";
+}
+
+<h2>Elija su usuario</h2>
+
+@using (Html.BeginForm("User_Dev", "Home"))
+{
+    <div class="form-group">
+        <label for="SelectUser" class="col-lg-2 control-label">Usuario</label>
+        <div class="col-md-10">
+            <label> Eliga el desarrollador</label>
+            <select class="form-control" id="SelectUser" name="Usuario">
+                @foreach (var item in Model)
+                {
+                    string texto = item.nombre;
+                    <option>@texto</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div></div>
+
+    <button type="submit">Iniciar</button>
+}
+<br />
+@Html.ActionLink("Crear nuevo usuario", "Nuevo_Us")
+<br />
+<br />
+@Html.ActionLink("Regresar", "Index", "Home")

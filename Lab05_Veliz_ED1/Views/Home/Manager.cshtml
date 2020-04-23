@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Lab05_Veliz_ED1.Models.mTarea>
+
+@{
+    ViewBag.Title = "Manager";
+}
+
+<h2>Manager</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.Proyeto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prioridad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_dev)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+      
+            <tr>
+                <td>
+                    @using (Html.BeginForm())
+                    {
+                        DateTime fecha = item.Fecha;
+                        string Fecha_text = string.Format("{0: dd/MM/yyyy}",fecha);
+                        ;
+<label>@Fecha_text</label>
+}
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proyeto)
+                </td>
+                <td>
+                    @using (Html.BeginForm())
+                    {
+                        int prio = item.Prioridad;
+                        if (prio == 0)
+                        {
+                            <label>Alta</label>
+                        }
+                        else if (prio == 10)
+                        {
+                            <label>Media Alta</label>
+                        }
+                        else if (prio == 20)
+                        {
+                            <label>Media</label>
+                        }
+                        else if (prio == 30)
+                        {
+                            <label>Media Baja</label>
+                        }
+                        else if (prio == 40)
+                        {
+                            <label>Baja</label>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre_dev)
+                </td>
+            </tr>
+
+    }
+
+</table>
+@Html.ActionLink("Regresar", "Index")
